@@ -1,0 +1,13 @@
+{
+    "mcpServers": {
+        "aoci": {
+            "command": "C:/Users/Administrator/AppData/Local/AOCI/aoci.exe",
+            "args": [
+                "--repo",
+                "C:/Users/Administrator/Documents/projects/adaptive-mesh-splatting",
+                "mcp"
+            ],
+            "description": "AOCI-CODE: repository cognition index (read and governed maintenance)"
+        }
+    }
+}

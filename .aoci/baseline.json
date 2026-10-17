@@ -1,0 +1,518 @@
+{
+  "version": 1,
+  "created_at": "2026-10-17T10:40:58Z",
+  "updated_at": "2026-10-17T10:46:24Z",
+  "files": {
+    ".gitattributes": {
+      "role": "index",
+      "sha256": "21fa16a2122e2b0360b47502c577428b645437e08e9e87ffba661f84853cb476",
+      "size": 291,
+      "normalized_sha256": "21fa16a2122e2b0360b47502c577428b645437e08e9e87ffba661f84853cb476"
+    },
+    ".gitignore": {
+      "role": "index",
+      "sha256": "79cd942108762f9b360b3ebcf55225cc35e7e4f4c18db4d70d40450024355fb2",
+      "size": 3301,
+      "normalized_sha256": "a966515041680a0576b0aecf083ed08cf647e2365385e8fa466d795aee06324a"
+    },
+    ".gitmodules": {
+      "role": "index",
+      "sha256": "85183d6389551baca895e361177405cf78397e77f2fb2003fe5941c70c25c75c",
+      "size": 413,
+      "normalized_sha256": "aaca924daa79ac027436e38e29aa37aeaa264506431d851056e43b0fb0a8e7a1"
+    },
+    ".pi/agent.json": {
+      "role": "index",
+      "sha256": "8b0747e11defe702b8c8e11dab6f982d5691538b64b3100b368e21a0961b1e3f",
+      "size": 766,
+      "normalized_sha256": "8b0747e11defe702b8c8e11dab6f982d5691538b64b3100b368e21a0961b1e3f"
+    },
+    ".pi/mcp-adapter.json": {
+      "role": "index",
+      "sha256": "e3ed0276e13bb548b2f1e45054f80996a5bf73bcf2b705a94d53d7a6d18a28dd",
+      "size": 371,
+      "normalized_sha256": "e3ed0276e13bb548b2f1e45054f80996a5bf73bcf2b705a94d53d7a6d18a28dd"
+    },
+    ".pi/mcp.json": {
+      "role": "index",
+      "sha256": "330e3307ab79ced90e1d44a58990212312a0420b6ec33818de13e48542b6fb39",
+      "size": 415,
+      "normalized_sha256": "f53933df7b0e8ea85584d6b63053c8de09394a63a5b5f261eef2f537e564402d"
+    },
+    ".pi/settings.json": {
+      "role": "index",
+      "sha256": "bc72f8cfa49ccfa293ab699ee272fbac0213f31ce7d9389a54408b4588bbf989",
+      "size": 170,
+      "normalized_sha256": "bc72f8cfa49ccfa293ab699ee272fbac0213f31ce7d9389a54408b4588bbf989"
+    },
+    "AGENTS.md": {
+      "role": "index",
+      "sha256": "8484f0f198917ef25ad420ccaee45cb317b863905c1fe603498b187e01048490",
+      "size": 15598,
+      "normalized_sha256": "8484f0f198917ef25ad420ccaee45cb317b863905c1fe603498b187e01048490"
+    },
+    "LICENSE.md": {
+      "role": "index",
+      "sha256": "24fcadd6cacaed2192e58154f0189bf0ead821fe5341c46a73a611adecc959fe",
+      "size": 10959,
+      "normalized_sha256": "6f5be9e472c2f948f8cb41680aef71591288283ef913781f3cf5228f58c938f1"
+    },
+    "LICENSE_GS.md": {
+      "role": "index",
+      "sha256": "652b439886fc516df6b258f18b6ac3f580e301dda60366f76cc99366d8cf3f24",
+      "size": 4356,
+      "normalized_sha256": "c2297cb5b2dd996979a6031ae7c5e112be310f87595c1dc40340be820e0d67e5"
+    },
+    "README.md": {
+      "role": "index",
+      "sha256": "057c32f0a33680e211cf5443c13f01392fb4f635bf360e1b98065dcce5afa10d",
+      "size": 10602,
+      "normalized_sha256": "51617d00c3b69a9294c976c9bda0cade770c437df9cb773c5f800f57df4f3485"
+    },
+    "annotate_points_boxes.py": {
+      "role": "index",
+      "sha256": "c7b8b97e02e8534ddffabb207f6bba23bae2c6ec6d7f7528eae1ad37737f4526",
+      "size": 14287,
+      "normalized_sha256": "6c13a1d7bbcdf0a4c9f79f2d2fa18f519e5d1297c05ce1a027ddb5150ae2c89f"
+    },
+    "aoci.code.txt": {
+      "role": "index",
+      "sha256": "87d5a30997f0204a65be37fa3808b7e45e5121cf4416a95cd1716437ea8f7da5",
+      "size": 26068,
+      "normalized_sha256": "87d5a30997f0204a65be37fa3808b7e45e5121cf4416a95cd1716437ea8f7da5"
+    },
+    "aoci.meta.txt": {
+      "role": "index",
+      "sha256": "ebafbe54981dfb23686171bb5253ded8c2bbf9c697b73a1b1af9283d686a5cc4",
+      "size": 2307,
+      "normalized_sha256": "ebafbe54981dfb23686171bb5253ded8c2bbf9c697b73a1b1af9283d686a5cc4"
+    },
+    "aoci.txt": {
+      "role": "index",
+      "sha256": "5534a10d1ba76f6a65d8f8c91a7b4686a68b13123570dfc4769fef8018962d69",
+      "size": 312,
+      "normalized_sha256": "5534a10d1ba76f6a65d8f8c91a7b4686a68b13123570dfc4769fef8018962d69"
+    },
+    "arguments/__init__.py": {
+      "role": "index",
+      "sha256": "630fe451f4f4398d6218e333e4d4d490dac8cf6968e220ebddced04b650aa8cc",
+      "size": 5947,
+      "normalized_sha256": "fcf44e6b2dc603290978d4cc6af8b1a48a2049b8a9656f930ffc08eed0665e59"
+    },
+    "assets/teaser.png": {
+      "role": "index",
+      "sha256": "c228f86a68b08334e7bc23f906f94109eb931c4875b1055dfd833de43a832e0c",
+      "size": 1667842
+    },
+    "bash_scripts/m360_indoor/eval_bonsai.sh": {
+      "role": "index",
+      "sha256": "851f69d9178fbb5f9cad8b109c3b0fb8cc97baa408dada6b6d318b7786121cb7",
+      "size": 940,
+      "normalized_sha256": "cd02c6ff377087eba879a8c0f6298b315bc6221c133e679363e620492d6ab23b"
+    },
+    "bash_scripts/m360_indoor/eval_counter.sh": {
+      "role": "index",
+      "sha256": "677d84225ec2ed7268731e5d6b633fe52ed6a0f02460fd9dd1d3496eab845383",
+      "size": 946,
+      "normalized_sha256": "c9c151a67bfbe5ae12bee8344c4fe8b64f5cb4dc0f5f8f5a04621337a1b3bb5a"
+    },
+    "bash_scripts/m360_indoor/eval_kitchen.sh": {
+      "role": "index",
+      "sha256": "625f033da4e30b0ea7ba6996924b0e17aead455f3c736b2b16d3555b50023d4a",
+      "size": 946,
+      "normalized_sha256": "a6bb9f2d2a17a4beeaa547b539eb37e608696376c187b6a53156217edb08cd80"
+    },
+    "bash_scripts/m360_indoor/eval_room.sh": {
+      "role": "index",
+      "sha256": "25aaf88921a8c63921f572c6caf9a5f5e7e30a258f92d9a56c148f8be8bb2947",
+      "size": 928,
+      "normalized_sha256": "f98cc242a9f172916b6a84d90b9251f228e102897b0defe89a2687648f8e22c6"
+    },
+    "bash_scripts/m360_outdoor/eval_bicycle.sh": {
+      "role": "index",
+      "sha256": "bc7955b4197dffd6bcc65c8e54770f0cd93712272ce30fb2359d919aa266efb6",
+      "size": 705,
+      "normalized_sha256": "6863c7a216a55434f126c262728c98c8f4d79f3d62047a90e45cd1db43f1344a"
+    },
+    "bash_scripts/m360_outdoor/eval_flowers.sh": {
+      "role": "index",
+      "sha256": "0a9c13653ea970984cc6b3bff34172c0c1e5ee167da9f51c618ee3f020e758b7",
+      "size": 705,
+      "normalized_sha256": "b5891c4ba01464499f163355a7c23a2d3c2a33ab2b33f1a29bd15914c493326d"
+    },
+    "bash_scripts/m360_outdoor/eval_garden.sh": {
+      "role": "index",
+      "sha256": "436c51e345ad94db84b2d9082859ebcfc9bad56f947d693ee4282c84af95fd48",
+      "size": 699,
+      "normalized_sha256": "b196a59f136759e53b9aada121733185c2ed884a1ecce77429108f925492bed0"
+    },
+    "bash_scripts/m360_outdoor/eval_stump.sh": {
+      "role": "index",
+      "sha256": "588f04316f148e1d1e85aadc32d4be9fccf4973a612af176169041d19301ef9b",
+      "size": 693,
+      "normalized_sha256": "8fcbbeb3cdb91e435e11b86a0c86b0a98201020d10ca5852bde2937dd347c415"
+    },
+    "bash_scripts/m360_outdoor/eval_treehill.sh": {
+      "role": "index",
+      "sha256": "879a5c323166e45b158746a8823ed9dd372473b3b0fd718d8ba51ae541c838d7",
+      "size": 711,
+      "normalized_sha256": "6bdc6570d2423ea6e476737ebf3fef057bebf8eac6add942f1a04bfb4bcd04d1"
+    },
+    "bash_scripts/run_all.sh": {
+      "role": "index",
+      "sha256": "a45c64d4a6eef65102f1e6b02a4eb52fcc2f4801c7f59ffd887bd763e8cdd80e",
+      "size": 597,
+      "normalized_sha256": "0aedd606920a501d80ec4ec98497a88d897397e2fa0239c20f26923bfe321a62"
+    },
+    "bash_scripts/tandt/eval_train.sh": {
+      "role": "index",
+      "sha256": "5931b7ba7ef97e372b8bbc02f85888304a3b23e0861b41af2463c9566d784d1f",
+      "size": 670,
+      "normalized_sha256": "687b19f34c467a0c302b09be70f106fde61c4cb217e2cab31f62dd1b0b5fc559"
+    },
+    "bash_scripts/tandt/eval_truck.sh": {
+      "role": "index",
+      "sha256": "27b57247dd7ab3ac41f6003b8d13683c4199aa49cbffd05930beba83cfabaff1",
+      "size": 670,
+      "normalized_sha256": "1b21f6068af2f673487fcc53de8283ef6c062d00db95321c132191f3fc5d6993"
+    },
+    "bash_scripts/video_all.sh": {
+      "role": "index",
+      "sha256": "3d51474b4076977121d3b068f8fdf3a65e8b76633d16cab8c3cd4cc645bf87a8",
+      "size": 628,
+      "normalized_sha256": "c347fe0f8423d042f41073d2a5f5b3ca5dc8fc4b0488389c6185aa46c06c3b59"
+    },
+    "checkpoints/download_ckpts.sh": {
+      "role": "index",
+      "sha256": "761ef6002224b334bb9784b3d4ec5ad0bdcb6964a91d68321b0ef8ef4e825b52",
+      "size": 2671,
+      "normalized_sha256": "6cb8caa8f70f40f7076029a9c858bfa4d4fdfb6c960b7943331c85432f6c2ac6"
+    },
+    "compile.bat": {
+      "role": "index",
+      "sha256": "1a3808dfa592027a1f5fef5aae7d27ce429a9bab3d0d92e6b2e8aad9e3808551",
+      "size": 267,
+      "normalized_sha256": "1d818931e55c03c03404ee6143a6007a4db7c9b96cdc1c453bdb5fe598e29c61"
+    },
+    "compile.sh": {
+      "role": "index",
+      "sha256": "fd593d635425e953b04bd71f45ec25334100823f83daa1593e17786bf80917ec",
+      "size": 188,
+      "normalized_sha256": "8c73de6151c5e26260e70870885d79b091a2d66738a7ebfed3f96026bf7644cf"
+    },
+    "create_ply.py": {
+      "role": "index",
+      "sha256": "d72e1664ecb74f677d165a1b466c8b0427ab455ce5a24dcafac1eee9f1d88bbe",
+      "size": 3863,
+      "normalized_sha256": "056f174160e19cae36d1b86de7c3bc5f631377538ed26750869af43a704fd3ce"
+    },
+    "create_video.py": {
+      "role": "index",
+      "sha256": "a40e0777ca48daaf2fc9fc29a0fcea68df821c056afe511f2f48586db677f903",
+      "size": 6742,
+      "normalized_sha256": "368d3b7856bf7108535d1e286c829b9a9d3de7ba0d44b216ffc97d8a6eb69f81"
+    },
+    "eval.py": {
+      "role": "index",
+      "sha256": "222218e116923fd2c4294f3198cecc7fa615819b78cb129ffa50b4118fecc7ba",
+      "size": 6954,
+      "normalized_sha256": "120c3df51f50e2d45ed88a3c585bce8842366df3e524f67e85ffbf6730d0a787"
+    },
+    "export_web.py": {
+      "role": "index",
+      "sha256": "ebde1ef5b4563aeeb13d2ed59482376c6fef271ba2e1f872eba866a25b8492fe",
+      "size": 9716,
+      "normalized_sha256": "c31600551167026eec2f4fd0700cb83cb5ac236fe53d22e2c76b1d2c34fc4337"
+    },
+    "extract_normals.py": {
+      "role": "index",
+      "sha256": "144d1ec7008a02f61aaf208db413dffbd32cb0407aa188097c152819ed058af6",
+      "size": 3598,
+      "normalized_sha256": "7c13076e1ebe2e229d5f8316b42eac87f975cc751925de3edcd864fb9d6ae0cc"
+    },
+    "full_eval.py": {
+      "role": "index",
+      "sha256": "3fd95070ede53cedb78aa0b18cf6e6c21052d455169bff8a4f40c0950dd61f7f",
+      "size": 2972,
+      "normalized_sha256": "9c8ea14df5e1c7e28af7f7ba58a8a5bf7f74225b48ac0ca5dc4672e87e9298af"
+    },
+    "lpipsPyTorch/__init__.py": {
+      "role": "index",
+      "sha256": "35806c438336e43c00bc7e5edc353c3de03926fc7b58cbb7e40a61678fcef4b5",
+      "size": 656,
+      "normalized_sha256": "a657ce7355782eb970f95fd0d2e26eec5b9023212d2b655814da6e15b70510b4"
+    },
+    "lpipsPyTorch/modules/lpips.py": {
+      "role": "index",
+      "sha256": "61272ed285c812cb420a3255448b52fd1fdcb14c3bd2c04c16e3fc4b297651d2",
+      "size": 1187,
+      "normalized_sha256": "3bece0b9cf9943af5b043026458819d259df9bfe7c2a1d3ffc6c905e7e5aa2b4"
+    },
+    "lpipsPyTorch/modules/networks.py": {
+      "role": "index",
+      "sha256": "92a21e6eaedd0211f2a535f07855447ff4436cdeff66fecedcc943f827d1be98",
+      "size": 2788,
+      "normalized_sha256": "dfa6f152b0e3fbc23ac3bfaea52b46e9473e64ad539ea22ab030c57af51c7f14"
+    },
+    "lpipsPyTorch/modules/utils.py": {
+      "role": "index",
+      "sha256": "4c371e9b71371ea0cd376313f2a94e2ff04a54778ee07444efb27117e90e5a4f",
+      "size": 915,
+      "normalized_sha256": "1bd4a7d4e7b43215497675ed852936fe4f27e7ea3068afe0b0e1f7cfb6c48570"
+    },
+    "mesh.py": {
+      "role": "index",
+      "sha256": "35388df0abe2456fd90d9a43f6c994aae375954c192d9f5556d7eaf3a2a73788",
+      "size": 5089,
+      "normalized_sha256": "a323eb351a566013016506a410eb7c751f7807c833cd205ca2e2cdacac3a1673"
+    },
+    "metrics.py": {
+      "role": "index",
+      "sha256": "c381385f3f3e23a6858814ea4ba924183e6916d2a567c50ee217996cd2925c5d",
+      "size": 4593,
+      "normalized_sha256": "8f5cf634273f107936bcef73143b297caeb63a3bbcfd971d46443c1cbba05619"
+    },
+    "render.py": {
+      "role": "index",
+      "sha256": "50ce0c0223726bee4732dfc2fa0ceabd9a5a1c07f7241240a8eda925941eb54c",
+      "size": 3413,
+      "normalized_sha256": "463726a1ecb1069639735231ce818b999105f06e61535617912caaf98957fb65"
+    },
+    "render_utils.py": {
+      "role": "index",
+      "sha256": "6160e9684af59df389a86aec18c611b1d48fd15d2629b1fafb97f3bf9f7c1a18",
+      "size": 5003,
+      "normalized_sha256": "7c13e8787bf87de8c4d9d94a0d4d0bd7852ebe3e2eb10ce7b8ac30c6664af4c9"
+    },
+    "requirements.txt": {
+      "role": "index",
+      "sha256": "0d449e1ad42120fbe90ba438fc05c286600bcc26a7e383db8721e56a626d7f22",
+      "size": 88,
+      "normalized_sha256": "7ac9f71981629f2481d008af805a5d29762759200f57239ec57f86fbc777525b"
+    },
+    "scene/__init__.py": {
+      "role": "index",
+      "sha256": "84967147de25621e671520874e22c47e8207a022ec7bdcc698ebf976503a5b14",
+      "size": 4921,
+      "normalized_sha256": "5a3f24f518bb9a29c52e47cd111bfcc4a5af5483577913d29d996bcf37bdc46a"
+    },
+    "scene/cameras.py": {
+      "role": "index",
+      "sha256": "a735f74fb59e8daf00df8c64645e2ea2c2248b3cd39ef6de178569d5ea5a8b4a",
+      "size": 4267,
+      "normalized_sha256": "7d512ca9685a5b3ee6d8b021b8baf66f590b7a45cd547a92b9126887d1516a93"
+    },
+    "scene/colmap_loader.py": {
+      "role": "index",
+      "sha256": "4a68d34ecaa4a727de133aa7b5d55354c80f9c01221b54ce7696a88982b39b01",
+      "size": 12640,
+      "normalized_sha256": "afc907a95905b4a2b0be2e41fa27fd2def747db4c229ddc31bfb43265c6a898f"
+    },
+    "scene/dataset_readers.py": {
+      "role": "index",
+      "sha256": "e259eac8862ac9c03b6fcfaf6b4d7901dc6696b27e5bb5d7bc643f47d29b2758",
+      "size": 13938,
+      "normalized_sha256": "6ebbf0623c825f3b546fd0cf718c0ebd0135453e9786242382686c333c9c26cf"
+    },
+    "scene/triangle_model.py": {
+      "role": "index",
+      "sha256": "2cee184a3675fb1d2d368e428656f8c7f74795b55e588ccdbf9edc37ed7e4e72",
+      "size": 38555,
+      "normalized_sha256": "66814de2dc7c1a455d86baad2956dc1b622c26de87577d531b0801dda659f9a1"
+    },
+    "segmentation/create_ply.py": {
+      "role": "index",
+      "sha256": "6c65fe8725e47e99a9cfe0466b04d013043a9582af468448f51842051690252c",
+      "size": 5481,
+      "normalized_sha256": "d34f3a49f113b29447fe9f5943cab5769759bb2ceb61a7f129467aed3743ff20"
+    },
+    "segmentation/extract_images.py": {
+      "role": "index",
+      "sha256": "dc486681054df02d671cd993e88283f29bbcd2f33a39958369e67101b5437331",
+      "size": 2429,
+      "normalized_sha256": "0f6d16750f33286f048f09f2d1b66844889282fe63c8e48d8371930ef80907fb"
+    },
+    "segmentation/run_single_object.py": {
+      "role": "index",
+      "sha256": "4590805bf5fddeb551f15a71e6803871fd12fb08e08b474a996c7788e4148226",
+      "size": 2516,
+      "normalized_sha256": "953ebc25ab941a408326860cffc8ab16ffa952140ca2e9a2b3b02b6e223e15c5"
+    },
+    "segmentation/sam_mask_generator_json.py": {
+      "role": "index",
+      "sha256": "73c622692254fbe27eeba18db54aa23d1a167d58f2f06129e1de2569d8ad6c7a",
+      "size": 4885,
+      "normalized_sha256": "176f5186571db1906b05972eb610a38f95486e444122014b42d8a9a940a17a76"
+    },
+    "segmentation/segment.py": {
+      "role": "index",
+      "sha256": "32fd3720f5fec5a488e3a2c1218ffcaac3fb4b9b7db55aec41d461092b9f3c71",
+      "size": 5677,
+      "normalized_sha256": "7f71b3dd009c33a0572ef94a2b6183799033184cc736195dfea233726d5bf4ca"
+    },
+    "train.py": {
+      "role": "index",
+      "sha256": "c7982378a3d5f57e1836ce3579b6824ddfdc522062b0ed79c57c2ea582229465",
+      "size": 22867,
+      "normalized_sha256": "8264fe029056a939fe3ecedebbaf4d8f7199a8ad9e8566eda8e3d084da17b709"
+    },
+    "triangle_renderer/__init__.py": {
+      "role": "index",
+      "sha256": "1fa990a5024af909b807d2ee83376732b861f6cbcb905098227ccceb2108635d",
+      "size": 10395,
+      "normalized_sha256": "1d1870f98e80024247af0778f29d2a2e01410693f16881a2fdffa5580baeded4"
+    },
+    "utils/camera_utils.py": {
+      "role": "index",
+      "sha256": "31d620ae6ec8c68cb91ce3156e98971161b3abccb8e7fb074b47359780179b57",
+      "size": 5211,
+      "normalized_sha256": "dc81fe0d82ac7bab33264b8c741c1b772a1fc1297843a9d9bfb27c667c9070d6"
+    },
+    "utils/general_utils.py": {
+      "role": "index",
+      "sha256": "e9e8f4ddde2d2958522dea25e791feae2993ba1cd596fdb03b7f786e7c0cf3d0",
+      "size": 4721,
+      "normalized_sha256": "d2f6bd16df948a7d150f1694821f7084b87bfbf8ee09221668bf7e14ce6b8977"
+    },
+    "utils/graphics_utils.py": {
+      "role": "index",
+      "sha256": "cf4eb57211ef01b1fa1bbaad6948dbbe8cc99b0c5b9ad391c4e18969d0702dc2",
+      "size": 2617,
+      "normalized_sha256": "231a679d1506bbd42da3d0b6d540673926c28211e29a4cba5a3a61e895e98ac9"
+    },
+    "utils/image_utils.py": {
+      "role": "index",
+      "sha256": "1ff73916f55f0f12b938e944da098fbd372d147a83fb00e03014c618cee34b1a",
+      "size": 4206,
+      "normalized_sha256": "b44be4c57ea7c78da908a05a8e3d3807447d96f7a210a9f224834e0d344cdc63"
+    },
+    "utils/loss_utils.py": {
+      "role": "index",
+      "sha256": "d56231c7a1724c1140ef28dcf01847874b31e802e4afd855da8bdc4601510fbe",
+      "size": 5103,
+      "normalized_sha256": "39f98032e79005d20d6ecdb580db19229c32047c6b7444c652bdd5f9fe4ecf61"
+    },
+    "utils/make_depth_scale.py": {
+      "role": "index",
+      "sha256": "3efa3defdecad29eb03b78fc2ef815f07754a8bb7b5aeab67c7a2b7f3398728a",
+      "size": 3578,
+      "normalized_sha256": "f954dfd7d7b4417f370e73f3a2d839d8a592b3e454ff142a523530a606c1990e"
+    },
+    "utils/mesh_utils.py": {
+      "role": "index",
+      "sha256": "e86d443031a9310436168f318f4acf03c9c19069b757ef07111bc7f34f8e9c86",
+      "size": 13389,
+      "normalized_sha256": "685652c3aa41ba861e04fcf9320e963b91089e3a9a856fb4559f4f0ce8abc0e1"
+    },
+    "utils/point_utils.py": {
+      "role": "index",
+      "sha256": "c18865d6a7761b5e0f0bbda252351426f305d46994be107ae120f9202b8d9365",
+      "size": 1424,
+      "normalized_sha256": "3bfbd7a496b7f55d30aebccb1abc6df407a2dd4896283f68f5c8a67513317703"
+    },
+    "utils/read_write_model.py": {
+      "role": "index",
+      "sha256": "c6f05b25b164756af94fc7c2e469c3db2711a1e0411fa541096b2643911de120",
+      "size": 23152,
+      "normalized_sha256": "c1b1fd61fcf30e00cfa080eb75ba6c46ecfd617dfad1e6acff994a0bca1196c7"
+    },
+    "utils/render_utils.py": {
+      "role": "index",
+      "sha256": "8a9b4096caf12e33db225851fe46868919d397eb073e106f3297b3bd945ec96b",
+      "size": 11072,
+      "normalized_sha256": "9ce6c79940c6275d59969aab5524541904764c5b610960be6652ae1fa11a808d"
+    },
+    "utils/sh_utils.py": {
+      "role": "index",
+      "sha256": "ece62fef10e63f3bb1f0c89292ff82591a3a8842c25fe039102d853bc8dded93",
+      "size": 4488,
+      "normalized_sha256": "7d1ff267546390635e6d1f68c4f88c4a8b052482d5c9be1d32f06bc69e9a96e7"
+    },
+    "utils/system_utils.py": {
+      "role": "index",
+      "sha256": "d9a83243badc78a57d52362890397702b6ebccd54bce897dd2bbf965111c65d0",
+      "size": 1302,
+      "normalized_sha256": "dbc7eb3c6f7dd9dc32a8959b8924e3621ec1dced4bdfbfb0d8ef1df63ffa6cb1"
+    },
+    "utils/tetmesh.py": {
+      "role": "index",
+      "sha256": "0a362e54b976c36151f16c9390617b41763d9a6e4efa287a6192c5c8d2bead3f",
+      "size": 8696,
+      "normalized_sha256": "d2aa2b6c7e289b206c32cdd48a7b1ba5bd7fb11ffda5ada4929e77678229fddf"
+    },
+    "utils/triangle_utils.py": {
+      "role": "index",
+      "sha256": "337d4f936b0c37e1cce35399129d1f6cd5fc85c7d38e3d05801e1a3d84d31672",
+      "size": 1333,
+      "normalized_sha256": "f08cee9ed2bbaa0f127385673f4eb7e1da12bfa49851f6cef384427d9da44f8b"
+    }
+  },
+  "managed_scope": {
+    "version": "managed-scope-baseline/v1",
+    "policy_identity": "3b029307ca9a998f7863146b9aae29089dbd7d695d8e543a5334a9ba32f41394",
+    "observe_change_policy": "review_required",
+    "budget_policy_identity": "15e9b37a6c57e9bf03c9df3d0d049eb5b9a7f5540f9d34960408114e2538a32d",
+    "budget_policy": {
+      "version": "cognition-budget-policy/v1",
+      "mode": "enforce",
+      "whole_index": {
+        "target_tokens": 200000,
+        "warning_tokens": 300000,
+        "max_tokens": 400000
+      },
+      "r": [
+        {
+          "min_c": 1,
+          "max_c": 4,
+          "target_tokens": 25,
+          "max_tokens": 50
+        },
+        {
+          "min_c": 5,
+          "max_c": 7,
+          "target_tokens": 45,
+          "max_tokens": 90
+        },
+        {
+          "min_c": 8,
+          "max_c": 8,
+          "target_tokens": 70,
+          "max_tokens": 140
+        },
+        {
+          "min_c": 9,
+          "max_c": 9,
+          "target_tokens": 90,
+          "max_tokens": 180
+        }
+      ],
+      "s": [
+        {
+          "min_c": 1,
+          "max_c": 4,
+          "target_tokens": 20,
+          "max_tokens": 40
+        },
+        {
+          "min_c": 5,
+          "max_c": 7,
+          "target_tokens": 40,
+          "max_tokens": 80
+        },
+        {
+          "min_c": 8,
+          "max_c": 8,
+          "target_tokens": 70,
+          "max_tokens": 140
+        },
+        {
+          "min_c": 9,
+          "max_c": 9,
+          "target_tokens": 100,
+          "max_tokens": 200
+        }
+      ]
+    },
+    "apply_authorization_mode": "auto"
+  }
+}

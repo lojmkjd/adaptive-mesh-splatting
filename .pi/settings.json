@@ -1,0 +1,12 @@
+{
+  "quietStartup": true,
+  "piexis": {
+    "recommendedTools": "enabled",
+    "agentSetup": "enabled"
+  },
+  "defaultTools": [
+    "+grep",
+    "+find",
+    "+ls"
+  ]
+}

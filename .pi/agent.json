@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/VarunGaikwad/piexis/main/schemas/agent.schema.json",
+  "model": "deepseek/deepseek-flash",
+  "small_model": "deepseek/deepseek-flash",
+  "subagent_model": "deepseek/deepseek-flash",
+  "delegate_exploration": true,
+  "auto_profile": true,
+  "subagent_variant_overrides": {
+    "plan": {
+      "model": "deepseek/deepseek-flash",
+      "effort": "high"
+    },
+    "orchestrator": {
+      "model": "deepseek/deepseek-flash",
+      "effort": "high"
+    },
+    "debug": {
+      "model": "deepseek/deepseek-flash",
+      "effort": "high"
+    },
+    "ask": {
+      "model": "deepseek/deepseek-flash",
+      "effort": "low"
+    },
+    "code": {
+      "model": "deepseek/deepseek-flash",
+      "effort": "medium"
+    }
+  }
+}
