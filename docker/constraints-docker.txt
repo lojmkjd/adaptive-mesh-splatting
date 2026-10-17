@@ -1,0 +1,12 @@
+# Constraints for the container dependency install.
+#
+# The repository is validated against Python 3.11, torch 2.7.1 (CUDA 12.6) and
+# torchvision 0.22.1, and the in-image nvcc is 12.6. Any other torch build makes
+# the CUDA extension build fail with "detected CUDA version (12.6) mismatches the
+# version that was used to compile PyTorch (13.0)".
+#
+# These entries also stop pip from resolving a newer torch through the loose
+# "torch>=0.4.0" requirement of lpips.
+torch==2.7.1
+torchvision==0.22.1
+numpy==1.26.4

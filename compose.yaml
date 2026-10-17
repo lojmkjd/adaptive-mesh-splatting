@@ -1,0 +1,76 @@
+# Docker Compose for MeshSplatting (opaque-triangle differentiable renderer).
+#
+#   docker compose build
+#   docker compose run --rm smoke            # short real training run (proof)
+#   docker compose run --rm smoke-offline    # same run with networking disabled
+#   docker compose run --rm shell            # interactive bash
+#   docker compose run --rm train -s /data/shudian -m /outputs/full --eval
+#
+# Host paths (set in .env or the shell):
+#   DATA_DIR    dataset root mounted read-only at /data   (default D:/workspace/LiGBA-GS/datasets)
+#   OUTPUT_DIR  output root mounted writable at /outputs  (default D:/workspace/meshsplat-output)
+name: mesh-splatting
+
+x-gpu: &gpu
+  deploy:
+    resources:
+      reservations:
+        devices:
+          - driver: nvidia
+            count: all
+            capabilities: [gpu]
+
+x-common: &common
+  image: mesh-splatting:cu126
+  build:
+    context: .
+    dockerfile: Dockerfile
+    args:
+      # Wheel sources. PyPI is primary because files.pythonhosted.org measured
+      # ~8.8 MB/s on this host versus ~0.3-0.5 MB/s for the PyTorch index and
+      # Docker Hub; the mirrors remain as fallbacks for other networks.
+      PIP_INDEX_URL_PRIMARY: ${PIP_INDEX_URL_PRIMARY:-https://pypi.org/simple}
+      PIP_INDEX_URL_FALLBACK: ${PIP_INDEX_URL_FALLBACK:-https://pypi.tuna.tsinghua.edu.cn/simple}
+      CUDA_ARCH_LIST: ${CUDA_ARCH_LIST:-8.9}
+  working_dir: /workspace
+  entrypoint: ["/usr/local/bin/entrypoint.sh"]
+  stdin_open: true
+  tty: true
+  environment:
+    NVIDIA_VISIBLE_DEVICES: all
+    NVIDIA_DRIVER_CAPABILITIES: compute,utility
+    PYTHONUNBUFFERED: "1"
+  volumes:
+    # Long syntax: keeps Windows drive letters ("D:/...") out of the "source:target"
+    # short-syntax colon parsing.
+    #
+    # The dataset mount is writable on purpose: scene/dataset_readers.py always
+    # creates <scene>/normals/ next to the image folder and converts
+    # sparse/0/points3D.bin to points3D.ply in place on first load. Mount it
+    # read-only only after creating those two artifacts yourself.
+    - type: bind
+      source: ${DATA_DIR:-D:/workspace/LiGBA-GS/datasets}
+      target: /data
+    - type: bind
+      source: ${OUTPUT_DIR:-D:/workspace/meshsplat-output}
+      target: /outputs
+
+services:
+  train:
+    <<: [*common, *gpu]
+    command: ["python", "train.py", "--help"]
+
+  shell:
+    <<: [*common, *gpu]
+    command: ["bash"]
+
+  smoke:
+    <<: [*common, *gpu]
+    command: ["bash", "docker/smoke.sh"]
+
+  # Proof that no run-time network access is required: the LPIPS/VGG weights are
+  # baked into the image at build time.
+  smoke-offline:
+    <<: [*common, *gpu]
+    network_mode: "none"
+    command: ["bash", "docker/smoke.sh"]

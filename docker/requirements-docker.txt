@@ -1,0 +1,33 @@
+# Container-only Python dependencies.
+#
+# The repository's requirements.txt stays untouched on purpose: it is a managed
+# AOCI object and its semantics are "as published upstream". This file lists what
+# the container additionally needs to make the code importable and runnable.
+#
+# Verified against the source tree:
+#   * numpy must stay < 2 for the pinned torch/torchvision and open3d wheels.
+#   * mmcv, mmengine and timm appear in requirements.txt but are never imported.
+#   * pygame is only needed by annotate_points_boxes.py (excluded from the smoke
+#     scope) and sam2/fused_ssim are optional accelerators or SAM extras.
+
+numpy>=1.26,<2
+
+# Build-time dependencies of the in-repo extensions (used with --no-build-isolation)
+pybind11>=2.11
+
+# Declared in requirements.txt
+lpips>=0.1.4
+plyfile>=1.0
+mediapy>=1.2
+opencv-python>=4.10
+matplotlib>=3.8
+tqdm>=4.66
+trimesh>=4.4
+
+# Imported by the repository but missing from requirements.txt
+scipy>=1.13
+scikit-learn>=1.4
+joblib>=1.4
+imageio>=2.34
+scikit-image>=0.24
+open3d>=0.18

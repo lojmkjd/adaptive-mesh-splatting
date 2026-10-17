@@ -1,0 +1,32 @@
+# Build context exclusions. The image needs the source tree and the three
+# submodule trees (their CUDA/C++ extensions are compiled at build time), but not
+# git history, AOCI cognition assets, training artifacts, or caches.
+.git
+.gitmodules
+.pytest_cache
+.mypy_cache
+.ruff_cache
+
+# AOCI cognition assets are development-time only.
+.aoci
+.pi
+aoci.txt
+aoci.meta.txt
+aoci.code.txt
+AGENTS.md
+
+# Training inputs and outputs are bind-mounted, never baked in.
+models
+output
+eval
+logs
+*.log
+
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/*.egg-info
+**/build
+**/dist
+
+**/.DS_Store
