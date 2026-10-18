@@ -37,6 +37,7 @@ script), `CUDA_ARCH_LIST` (default `8.9`), `PIP_INDEX_URL_PRIMARY/FALLBACK`
 | AC3 training | PASS: 200 iterations at ~52 it/s on `/data/shudian`, `[smoke] PASS: /outputs/smoke/point_cloud/iteration_200/point_cloud_state_dict.pt (3.5M)` |
 | AC4 offline | PASS with `network_mode: "none"`: LPIPS loads from `/usr/local/lib/python3.11/dist-packages/lpips/weights/v0.1/vgg.pth`, VGG16 from the baked torchvision cache |
 | AC5 hygiene | PASS: after both runs `git status --short` shows only the new Docker files, no training artifacts inside the repository |
+| Render + metrics | PASS: 4 test views rendered at iteration 200; PSNR 13.41 / SSIM 0.2144 / LPIPS 0.7162, identical with networking disabled |
 
 Warm rebuild after a Dockerfile change takes ~23 min on this connection, of which
 the VGG16 warm-up (`528 MB` from `download.pytorch.org`) is ~15 min. The cold
@@ -90,6 +91,20 @@ under `/outputs/smoke/test/ours_200/`, `metrics.py` writes `results.json` and
 `per_view.json` next to the checkpoint, and the script ends with
 `[smoke-render] PASS PSNR=... SSIM=... LPIPS=...`.
 
+Measured on a 200-iteration model (28 images, `--eval` holds out 4):
+
+```
+[smoke-render] rendered 4 test views
+  SSIM :    0.2144426
+  PSNR :   13.4098864
+  LPIPS:    0.7161589
+[smoke-render] PASS PSNR=13.41 SSIM=0.2144 LPIPS=0.7162
+```
+
+Those absolute numbers are meaningless as a quality claim - 200 iterations is a
+smoke budget, not a result. What the check proves is that rendering, ground-truth
+alignment, and the three metrics run end to end on a real checkpoint.
+
 Guards in `docker/smoke-render.sh`:
 
 - missing checkpoint aborts with the exact training command to run first;
@@ -101,9 +116,13 @@ Guards in `docker/smoke-render.sh`:
 - `FULL=1` also renders the train split (slower), `MODEL`/`ITER` point at another
   checkpoint.
 
-`metrics.py` scores with the in-repo `lpipsPyTorch`, whose linear weights come
-from GitHub rather than the pip `lpips` package, so the image warms that cache
-separately at build time; otherwise the offline service would try to download.
+`metrics.py` scores with the in-repo `lpipsPyTorch`, whose linear weights it would
+fetch from GitHub. That fetch is unreliable on this network
+(`RemoteDisconnected`), so the build seeds the torch hub cache from the
+byte-identical file shipped in the pip `lpips` package (sha256 `a78928a0...`,
+7289 bytes) and verifies that the in-repo loader accepts it. `results.json` is
+written as `{method: {PSNR, SSIM, LPIPS}}` - there is no scene-keyed wrapper,
+which the script accounts for.
 
 ## Windows shells
 

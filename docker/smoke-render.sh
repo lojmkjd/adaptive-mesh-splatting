@@ -62,14 +62,32 @@ if not results.is_file():
     sys.exit(f"FATAL: metrics.py did not write '{results}' (look for 'Unable to compute metrics')")
 
 data = json.loads(results.read_text())
-methods = data.get(str(model)) or data.get(sys.argv[1]) or next(iter(data.values()), {})
-method = methods.get(f"ours_{iteration}") or next(iter(methods.values()), {})
+METRICS = {"PSNR", "SSIM", "LPIPS"}
 
-missing = {"PSNR", "SSIM", "LPIPS"} - set(method)
-if missing:
-    sys.exit(f"FATAL: results.json is missing {sorted(missing)}: {method!r}")
 
-psnr, ssim, lpips = (float(method[k]) for k in ("PSNR", "SSIM", "LPIPS"))
+def find_stats(node):
+    """metrics.py dumps {method: {PSNR,SSIM,LPIPS}} for the single scene, but it is
+    written from full_dict[scene_dir], so tolerate both a bare method map and a
+    scene-keyed wrapper, preferring the requested method."""
+    if not isinstance(node, dict):
+        return None
+    if METRICS <= set(node):
+        return node
+    preferred = node.get(f"ours_{iteration}")
+    if isinstance(preferred, dict) and METRICS <= set(preferred):
+        return preferred
+    for value in node.values():
+        found = find_stats(value)
+        if found is not None:
+            return found
+    return None
+
+
+stats = find_stats(data)
+if stats is None:
+    sys.exit(f"FATAL: no PSNR/SSIM/LPIPS block in '{results}': {json.dumps(data)[:400]}")
+
+psnr, ssim, lpips = (float(stats[k]) for k in ("PSNR", "SSIM", "LPIPS"))
 if not 1.0 < psnr < 100.0:
     sys.exit(f"FATAL: implausible PSNR {psnr:.3f} (test split mismatch?)")
 if not 0.0 <= ssim <= 1.0 or not -1.0 <= lpips <= 2.0:

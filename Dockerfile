@@ -140,10 +140,33 @@ COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh docker/smoke.sh docker/smoke-render.sh \
  && python -c "import triangle_renderer, scene, utils.render_utils; print('[build] repository imports ok')"
 
-# metrics.py scores with the in-repo lpipsPyTorch, whose linear weights live on
-# GitHub and land in the torch hub cache - a different file from the pip lpips
-# weights warmed above. Fetch it now so `smoke-render-offline` works.
-RUN python -c "from lpipsPyTorch.modules.utils import get_state_dict; get_state_dict('vgg', '0.1'); print('[build] cached lpipsPyTorch vgg weights')"
+# metrics.py scores with the in-repo lpipsPyTorch, whose linear weights it fetches
+# from GitHub into the torch hub cache. That fetch is unreliable on this network
+# (RemoteDisconnected) and breaks smoke-render-offline, so seed the cache from the
+# identical file shipped in the pip lpips package and prove the in-repo loader
+# accepts it. Verified byte-identical: sha256 a78928a0..., 7289 bytes.
+RUN python - <<'PY'
+import os
+import shutil
+from collections import OrderedDict
+
+import torch
+
+import lpips
+from lpipsPyTorch.modules.networks import LinLayers, get_network
+
+source = os.path.join(os.path.dirname(lpips.__file__), "weights/v0.1/vgg.pth")
+spool = os.path.join(torch.hub.get_dir(), "checkpoints")
+os.makedirs(spool, exist_ok=True)
+target = os.path.join(spool, "vgg.pth")
+shutil.copyfile(source, target)
+
+# Same rename lpipsPyTorch.modules.utils.get_state_dict applies to the GitHub file.
+raw = torch.load(source, map_location="cpu")
+renamed = OrderedDict((k.replace("lin", "").replace("model.", ""), v) for k, v in raw.items())
+LinLayers(get_network("vgg").n_channels_list).load_state_dict(renamed)
+print("[build] seeded and verified lpipsPyTorch vgg weights:", target)
+PY
 
 WORKDIR /workspace
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
