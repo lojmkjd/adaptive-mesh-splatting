@@ -2,7 +2,9 @@
 #
 #   docker compose build
 #   docker compose run --rm smoke            # short real training run (proof)
-#   docker compose run --rm smoke-offline    # same run with networking disabled
+#   docker compose run --rm smoke-render     # render.py + metrics.py on that checkpoint
+#   docker compose run --rm smoke-offline    # training proof with networking disabled
+#   docker compose run --rm smoke-render-offline
 #   docker compose run --rm shell            # interactive bash
 #   docker compose run --rm train -s /data/shudian -m /outputs/full --eval
 #
@@ -74,9 +76,19 @@ services:
     <<: [*common, *gpu]
     command: ["bash", "docker/smoke.sh"]
 
+  # Render + metrics proof on the checkpoint produced by `smoke`.
+  smoke-render:
+    <<: [*common, *gpu]
+    command: ["bash", "docker/smoke-render.sh"]
+
   # Proof that no run-time network access is required: the LPIPS/VGG weights are
   # baked into the image at build time.
   smoke-offline:
     <<: [*common, *gpu]
     network_mode: "none"
     command: ["bash", "docker/smoke.sh"]
+
+  smoke-render-offline:
+    <<: [*common, *gpu]
+    network_mode: "none"
+    command: ["bash", "docker/smoke-render.sh"]

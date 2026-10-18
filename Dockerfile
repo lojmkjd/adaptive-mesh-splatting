@@ -137,8 +137,13 @@ PY
 # ------------------------------------------------------------------ repository
 COPY . /workspace
 COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh docker/smoke.sh \
+RUN chmod +x /usr/local/bin/entrypoint.sh docker/smoke.sh docker/smoke-render.sh \
  && python -c "import triangle_renderer, scene, utils.render_utils; print('[build] repository imports ok')"
+
+# metrics.py scores with the in-repo lpipsPyTorch, whose linear weights live on
+# GitHub and land in the torch hub cache - a different file from the pip lpips
+# weights warmed above. Fetch it now so `smoke-render-offline` works.
+RUN python -c "from lpipsPyTorch.modules.utils import get_state_dict; get_state_dict('vgg', '0.1'); print('[build] cached lpipsPyTorch vgg weights')"
 
 WORKDIR /workspace
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]

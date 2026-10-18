@@ -1,8 +1,7 @@
 # Docker smoke record
 
-Layered proof that `mesh-splatting:cu126` builds and trains on this host.
-Scope is deliberately narrow: **build + one short real training run**. Rendering,
-metrics, mesh extraction and segmentation are a follow-up task.
+Layered proof that `mesh-splatting:cu126` builds and trains on this host, plus a
+render + metrics check on the resulting checkpoint.
 
 ## Environment used for this record
 
@@ -77,6 +76,34 @@ build is much longer because Docker Hub base layers run at ~0.4 MB/s.
   `-march=native`. Rebuild it on the machine that will run it.
 - **`CUDA_ARCH_LIST=8.9`** targets sm_89 (RTX 4090). Pass e.g.
   `--build-arg CUDA_ARCH_LIST="8.6;8.9"` for mixed fleets.
+
+## Render + metrics smoke
+
+```bash
+docker compose run --rm smoke                    # train 200 iterations -> /outputs/smoke
+docker compose run --rm smoke-render             # render.py + metrics.py on that checkpoint
+docker compose run --rm smoke-render-offline     # same, network disabled
+```
+
+Expected: `render.py` writes one render and one ground-truth PNG per test view
+under `/outputs/smoke/test/ours_200/`, `metrics.py` writes `results.json` and
+`per_view.json` next to the checkpoint, and the script ends with
+`[smoke-render] PASS PSNR=... SSIM=... LPIPS=...`.
+
+Guards in `docker/smoke-render.sh`:
+
+- missing checkpoint aborts with the exact training command to run first;
+- a model trained without `--eval` has no test split, so the script aborts after
+  rendering instead of scoring nothing;
+- `metrics.py` swallows its own exceptions and only prints
+  `Unable to compute metrics`, so the script requires `results.json` with
+  plausible PSNR/SSIM/LPIPS values;
+- `FULL=1` also renders the train split (slower), `MODEL`/`ITER` point at another
+  checkpoint.
+
+`metrics.py` scores with the in-repo `lpipsPyTorch`, whose linear weights come
+from GitHub rather than the pip `lpips` package, so the image warms that cache
+separately at build time; otherwise the offline service would try to download.
 
 ## Windows shells
 
