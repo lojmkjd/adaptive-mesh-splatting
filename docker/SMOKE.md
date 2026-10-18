@@ -45,6 +45,16 @@ build is much longer because Docker Hub base layers run at ~0.4 MB/s.
 
 ## Behaviour worth knowing before changing this image
 
+- **`docker compose run <service> <args>` replaces the service command**, it does
+  not append. `docker/entrypoint.sh` therefore prepends `python train.py` when the
+  first argument is a flag, which is what makes
+  `docker compose run --rm train -s /data/scene -m /outputs/run --eval` work.
+  Write the full command for anything else: `... train python render.py -m /out`.
+- **Git Bash rewrites `/outputs` into `C:/Program Files/Git/outputs`** before the
+  argument reaches Docker, which then fails with
+  `AssertionError: Could not recognize scene type!`. PowerShell and cmd are not
+  affected; in Git Bash prefix the command with `MSYS_NO_PATHCONV=1` (or write
+  the paths as `//outputs/...`).
 - **Dataset must be writable.** `scene/dataset_readers.py` unconditionally
   creates `<scene>/normals/` next to the image folder and converts
   `sparse/0/points3D.bin` into `points3D.ply` in place on first load. A `:ro`

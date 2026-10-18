@@ -6,6 +6,12 @@
 #   docker compose run --rm shell            # interactive bash
 #   docker compose run --rm train -s /data/shudian -m /outputs/full --eval
 #
+# Argument semantics: `docker compose run <service> <args>` replaces the service
+# command. The entrypoint compensates by prepending `python train.py` when the
+# first argument is a flag, so train.py flags can be passed directly. Write the
+# full command when you want another program:
+#   docker compose run --rm train python render.py -m /outputs/full
+#
 # Host paths (set in .env or the shell):
 #   DATA_DIR    dataset root mounted read-only at /data   (default D:/workspace/LiGBA-GS/datasets)
 #   OUTPUT_DIR  output root mounted writable at /outputs  (default D:/workspace/meshsplat-output)

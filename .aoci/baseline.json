@@ -1,7 +1,7 @@
 {
   "version": 1,
   "created_at": "2026-10-17T10:40:58Z",
-  "updated_at": "2026-10-17T17:02:16Z",
+  "updated_at": "2026-10-18T05:11:14Z",
   "files": {
     ".dockerignore": {
       "role": "index",
@@ -89,9 +89,9 @@
     },
     "aoci.code.txt": {
       "role": "index",
-      "sha256": "ee041f2b256b73a28b53cf6a3b6d7f098ea420ae98090f40adccfcbcaad43390",
-      "size": 29460,
-      "normalized_sha256": "ee041f2b256b73a28b53cf6a3b6d7f098ea420ae98090f40adccfcbcaad43390"
+      "sha256": "02197274215134018307b45da41a1a2fe27875f934c9b68b6ee49112d6bac63f",
+      "size": 29601,
+      "normalized_sha256": "02197274215134018307b45da41a1a2fe27875f934c9b68b6ee49112d6bac63f"
     },
     "aoci.meta.txt": {
       "role": "index",
@@ -214,9 +214,9 @@
     },
     "compose.yaml": {
       "role": "index",
-      "sha256": "b9313a57c4b17f2275de30849d7ac96db1eddffc11ebfb2df42223162809c186",
-      "size": 2680,
-      "normalized_sha256": "b9313a57c4b17f2275de30849d7ac96db1eddffc11ebfb2df42223162809c186"
+      "sha256": "4bceb8f71d12841d024f518beb1b75f1c58b43330e491ec5f1ad5c3964e50418",
+      "size": 3036,
+      "normalized_sha256": "4bceb8f71d12841d024f518beb1b75f1c58b43330e491ec5f1ad5c3964e50418"
     },
     "create_ply.py": {
       "role": "index",
@@ -232,9 +232,9 @@
     },
     "docker/SMOKE.md": {
       "role": "index",
-      "sha256": "06cd86083d3a2190f566785c32ef540638c0a82050ac8b1c559de11a8b934a40",
-      "size": 4694,
-      "normalized_sha256": "06cd86083d3a2190f566785c32ef540638c0a82050ac8b1c559de11a8b934a40"
+      "sha256": "dccf8478c11a147312da3af79875a04911b24fdc66855893e2735f57659d165f",
+      "size": 5390,
+      "normalized_sha256": "dccf8478c11a147312da3af79875a04911b24fdc66855893e2735f57659d165f"
     },
     "docker/constraints-docker.txt": {
       "role": "index",
@@ -244,9 +244,9 @@
     },
     "docker/entrypoint.sh": {
       "role": "index",
-      "sha256": "33352c118deb8706a1aa1e4141d0ffe50696d6757d8f57e4b7bc6e726526cb8e",
-      "size": 1054,
-      "normalized_sha256": "33352c118deb8706a1aa1e4141d0ffe50696d6757d8f57e4b7bc6e726526cb8e"
+      "sha256": "1c426f60cfc6b330fb18d4dee0f634470ebb4edcf39a37cb062f2883d6719ff3",
+      "size": 1533,
+      "normalized_sha256": "1c426f60cfc6b330fb18d4dee0f634470ebb4edcf39a37cb062f2883d6719ff3"
     },
     "docker/requirements-docker.txt": {
       "role": "index",

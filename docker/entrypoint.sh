@@ -32,4 +32,13 @@ print(
 PY
 fi
 
+# `docker compose run <service> <args>` REPLACES the service command instead of
+# appending to it, so `docker compose run --rm train -s /data/scene -m /out --eval`
+# would otherwise try to exec "-s" itself. Standard image idiom: when the first
+# argument is a flag, treat it as a train.py flag and prepend the interpreter.
+# Explicit commands still win, e.g. `... train python render.py -m /out`.
+if [ "$#" -gt 0 ] && [ "${1#-}" != "$1" ]; then
+  set -- python train.py "$@"
+fi
+
 exec "$@"
