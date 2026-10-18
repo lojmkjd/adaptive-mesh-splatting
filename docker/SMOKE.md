@@ -78,6 +78,31 @@ build is much longer because Docker Hub base layers run at ~0.4 MB/s.
 - **`CUDA_ARCH_LIST=8.9`** targets sm_89 (RTX 4090). Pass e.g.
   `--build-arg CUDA_ARCH_LIST="8.6;8.9"` for mixed fleets.
 
+## Windows shells
+
+`docker compose run` forwards arguments unchanged, so the only differences are
+shell syntax and MSYS path rewriting:
+
+| Shell | Env prefix / line continuation | `MSYS_NO_PATHCONV` | Notes |
+|---|---|---|---|
+| PowerShell | none / backtick | not needed | `VAR=value cmd` is a Bash form and fails as `CommandNotFoundException` |
+| Git Bash (MSYS) | `VAR=value cmd` / `\` | **required** | rewrites `/outputs` into `C:/Program Files/Git/outputs`, which surfaces as `Could not recognize scene type!` |
+| cmd.exe | none / `^` | not needed | |
+
+PowerShell, smoke-scale run on one line:
+
+```powershell
+docker compose run --rm -T train -s /data/shudian -m /outputs/shudian-test --eval --iterations 20 --test_iterations 20 --save_iterations 20
+```
+
+Git Bash, same run:
+
+```bash
+MSYS_NO_PATHCONV=1 docker compose run --rm -T train \
+  -s /data/shudian -m /outputs/shudian-test --eval \
+  --iterations 20 --test_iterations 20 --save_iterations 20
+```
+
 ## Host troubleshooting
 
 If `docker pull`/`build` hangs on `auth.docker.io` with an IPv6 error
