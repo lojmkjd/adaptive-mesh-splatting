@@ -137,7 +137,7 @@ PY
 # ------------------------------------------------------------------ repository
 COPY . /workspace
 COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh docker/smoke.sh docker/smoke-render.sh \
+RUN chmod +x /usr/local/bin/entrypoint.sh docker/smoke.sh docker/smoke-render.sh docker/smoke-guard.sh \
  && python -c "import triangle_renderer, scene, utils.render_utils; print('[build] repository imports ok')"
 
 # metrics.py scores with the in-repo lpipsPyTorch, whose linear weights it fetches

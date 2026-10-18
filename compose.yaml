@@ -5,6 +5,7 @@
 #   docker compose run --rm smoke-render     # render.py + metrics.py on that checkpoint
 #   docker compose run --rm smoke-offline    # training proof with networking disabled
 #   docker compose run --rm smoke-render-offline
+#   docker compose run --rm smoke-guard      # assert the render/metrics guards still fail loudly
 #   docker compose run --rm shell            # interactive bash
 #   docker compose run --rm train -s /data/shudian -m /outputs/full --eval
 #
@@ -92,3 +93,11 @@ services:
     <<: [*common, *gpu]
     network_mode: "none"
     command: ["bash", "docker/smoke-render.sh"]
+
+  # Regression suite for the smoke-render guards: every failure path must exit
+  # non-zero with its documented message. Fixtures only, so no dataset and no GPU
+  # work is required, and networking is disabled to prove the suite is local.
+  smoke-guard:
+    <<: [*common, *gpu]
+    network_mode: "none"
+    command: ["bash", "docker/smoke-guard.sh"]

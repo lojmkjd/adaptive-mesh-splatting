@@ -22,6 +22,7 @@ docker compose build                     # cold build: dominated by Docker Hub t
 docker compose run --rm -T shell python -c "..."       # AC2 import probe
 docker compose run --rm -T smoke                       # AC3 short training run
 docker compose run --rm -T smoke-offline               # AC4 same run, network disabled
+docker compose run --rm -T smoke-guard                 # guard regression suite (~1 s, no GPU work)
 ```
 
 Overrides: `DATA_DIR`, `OUTPUT_DIR` (host paths), `SCENE`, `OUT`, `ITERS` (smoke
@@ -38,6 +39,7 @@ script), `CUDA_ARCH_LIST` (default `8.9`), `PIP_INDEX_URL_PRIMARY/FALLBACK`
 | AC4 offline | PASS with `network_mode: "none"`: LPIPS loads from `/usr/local/lib/python3.11/dist-packages/lpips/weights/v0.1/vgg.pth`, VGG16 from the baked torchvision cache |
 | AC5 hygiene | PASS: after both runs `git status --short` shows only the new Docker files, no training artifacts inside the repository |
 | Render + metrics | PASS: 4 test views rendered at iteration 200; PSNR 13.41 / SSIM 0.2144 / LPIPS 0.7162, identical with networking disabled |
+| Guard regression | PASS: `smoke-guard` drives all 6 failure paths to a non-zero exit with its documented message and accepts all 3 valid shapes, offline |
 
 Warm rebuild after a Dockerfile change takes ~23 min on this connection, of which
 the VGG16 warm-up (`528 MB` from `download.pytorch.org`) is ~15 min. The cold
@@ -116,6 +118,9 @@ Guards in `docker/smoke-render.sh`:
 - `FULL=1` also renders the train split (slower), `MODEL`/`ITER` point at another
   checkpoint.
 
+The checks themselves live in `docker/verify_outputs.py` (`renders` and `metrics`
+subcommands) so they can be driven with fixtures instead of a training run.
+
 `metrics.py` scores with the in-repo `lpipsPyTorch`, whose linear weights it would
 fetch from GitHub. That fetch is unreliable on this network
 (`RemoteDisconnected`), so the build seeds the torch hub cache from the
@@ -123,6 +128,29 @@ byte-identical file shipped in the pip `lpips` package (sha256 `a78928a0...`,
 7289 bytes) and verifies that the in-repo loader accepts it. `results.json` is
 written as `{method: {PSNR, SSIM, LPIPS}}` - there is no scene-keyed wrapper,
 which the script accounts for.
+
+## Guard regression suite
+
+`docker compose run --rm smoke-guard` proves the assertions above still fail
+loudly instead of passing a broken run. It builds fixtures under `mktemp -d`, so
+it needs no dataset and does no GPU work, and `network_mode: "none"` keeps it
+honest; it takes about a second.
+
+| Case | Fixture | Expected |
+|---|---|---|
+| G1 missing checkpoint | empty model dir | `FATAL: no checkpoint ...`, exit 1 |
+| G2 no test split | checkpoint, empty `test/ours_200/renders` | `wrote no images`, exit 1 |
+| G3 count mismatch | 2 renders, 3 ground truth | `2 renders but 3 ground-truth images`, exit 1 |
+| G4 metrics wrote nothing | checkpoint, no `results.json` | `did not write`, exit 1 |
+| G5 incomplete block | `{"ours_200": {"PSNR": 20.0, "SSIM": 0.6}}` | `no PSNR/SSIM/LPIPS block`, exit 1 |
+| G6 implausible values | `PSNR: 0.0` | `implausible PSNR`, exit 1 |
+| G7 shape metrics.py writes | `{"ours_200": {...}}` | `PASS PSNR=13.41 ...`, exit 0 |
+| G8 scene-keyed wrapper | `{"/outputs/smoke": {"ours_200": {...}}}` | `PASS ...`, exit 0 |
+| G9 matching counts | 1 render, 1 ground truth | `rendered 1 test views`, exit 0 |
+
+It ends with `[smoke-guard] PASS: 9 guards behave as documented` and exits
+non-zero if any case regresses, so it works as a gate after touching
+`docker/smoke-render.sh` or `docker/verify_outputs.py`.
 
 ## Windows shells
 

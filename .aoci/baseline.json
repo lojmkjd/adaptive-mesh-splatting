@@ -1,7 +1,7 @@
 {
   "version": 1,
   "created_at": "2026-10-17T10:40:58Z",
-  "updated_at": "2026-10-18T08:24:18Z",
+  "updated_at": "2026-10-18T08:48:50Z",
   "files": {
     ".dockerignore": {
       "role": "index",
@@ -59,9 +59,9 @@
     },
     "Dockerfile": {
       "role": "index",
-      "sha256": "983d980c6cde24aaab09dcde618f6ecba7cb7c65b04a5fc54eb3e04631d8f983",
-      "size": 9126,
-      "normalized_sha256": "983d980c6cde24aaab09dcde618f6ecba7cb7c65b04a5fc54eb3e04631d8f983"
+      "sha256": "d58ffd471e53acc165547b32e2ea16f1c4da9b44d5dab7a8adb5059c0b63a967",
+      "size": 9148,
+      "normalized_sha256": "d58ffd471e53acc165547b32e2ea16f1c4da9b44d5dab7a8adb5059c0b63a967"
     },
     "LICENSE.md": {
       "role": "index",
@@ -89,9 +89,9 @@
     },
     "aoci.code.txt": {
       "role": "index",
-      "sha256": "d202a3840804fde4651a53e15f00c01ee10481bc6c539746bb12abf260fcc9b1",
-      "size": 30329,
-      "normalized_sha256": "d202a3840804fde4651a53e15f00c01ee10481bc6c539746bb12abf260fcc9b1"
+      "sha256": "8fe76a9c1bac7598253573d7703a0e7c063a61db113f869857c0e6640863241b",
+      "size": 31261,
+      "normalized_sha256": "8fe76a9c1bac7598253573d7703a0e7c063a61db113f869857c0e6640863241b"
     },
     "aoci.meta.txt": {
       "role": "index",
@@ -214,9 +214,9 @@
     },
     "compose.yaml": {
       "role": "index",
-      "sha256": "b128c70da7e3cd5fab5fbbaa4d7ff065785bcc82c635209a19b3aa3acbba650f",
-      "size": 3457,
-      "normalized_sha256": "b128c70da7e3cd5fab5fbbaa4d7ff065785bcc82c635209a19b3aa3acbba650f"
+      "sha256": "c0b922366ad6cb48a7969783c4bba0cb1b6e40b72f64b58da991b5ba9df7f361",
+      "size": 3906,
+      "normalized_sha256": "c0b922366ad6cb48a7969783c4bba0cb1b6e40b72f64b58da991b5ba9df7f361"
     },
     "create_ply.py": {
       "role": "index",
@@ -232,9 +232,9 @@
     },
     "docker/SMOKE.md": {
       "role": "index",
-      "sha256": "4937f7f54ff4b97885f9de0bf45309e32c096c12a6bbda1bbf9c8b15ed6d6331",
-      "size": 8429,
-      "normalized_sha256": "4937f7f54ff4b97885f9de0bf45309e32c096c12a6bbda1bbf9c8b15ed6d6331"
+      "sha256": "783bb172323b93f8a49b15ace2696ec5d140229a987bd2e0e8f95c52efb10299",
+      "size": 10186,
+      "normalized_sha256": "783bb172323b93f8a49b15ace2696ec5d140229a987bd2e0e8f95c52efb10299"
     },
     "docker/constraints-docker.txt": {
       "role": "index",
@@ -254,17 +254,29 @@
       "size": 1031,
       "normalized_sha256": "60c2f655d12eed1815543359fb84f4927d5d33a15a1bf50cd3b277490ccff1ba"
     },
+    "docker/smoke-guard.sh": {
+      "role": "index",
+      "sha256": "c96d03b0a300355741422197273ef0fda490538f25d3bfafbd734cc080566c40",
+      "size": 5215,
+      "normalized_sha256": "c96d03b0a300355741422197273ef0fda490538f25d3bfafbd734cc080566c40"
+    },
     "docker/smoke-render.sh": {
       "role": "index",
-      "sha256": "9bf7c80503c9659077df3362dbffc61cf4a0c58a7e57e3f1c321a70e8defdd28",
-      "size": 3379,
-      "normalized_sha256": "9bf7c80503c9659077df3362dbffc61cf4a0c58a7e57e3f1c321a70e8defdd28"
+      "sha256": "29636ea15e1e44e14df8da48cb40e59c6c683d9edb5e6612bdedaa733862b603",
+      "size": 1489,
+      "normalized_sha256": "29636ea15e1e44e14df8da48cb40e59c6c683d9edb5e6612bdedaa733862b603"
     },
     "docker/smoke.sh": {
       "role": "index",
       "sha256": "354c201c3a40a9d55fd9d6f2a7d4cb867edda2922496380237367558aee18172",
       "size": 1759,
       "normalized_sha256": "354c201c3a40a9d55fd9d6f2a7d4cb867edda2922496380237367558aee18172"
+    },
+    "docker/verify_outputs.py": {
+      "role": "index",
+      "sha256": "d39d39d3559b19bca50bd7f8f0ae7d023c4f29901e8b0a5a48b4687423ad6404",
+      "size": 3535,
+      "normalized_sha256": "d39d39d3559b19bca50bd7f8f0ae7d023c4f29901e8b0a5a48b4687423ad6404"
     },
     "eval.py": {
       "role": "index",
